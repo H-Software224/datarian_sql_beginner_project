@@ -87,14 +87,24 @@ WHERE customer_id = 1
 ## 데이터 분석 모델링 이용
 우선 customers, orders, payment을 이용하여 고객에 관해 필요한 데이터들의 
 가설 설정에 있어서 세 가지 관점에 대해서 가설 설정을 해야 한다.
-1. Recency
-기준으로 최근 2020년 6월 이상인 경우 Recent, 아니면 Past
-2. Frequency
-빈도를 통해서 2번 이상이면 High, 아니면 Low
-3. Monetary
-금액에 대해서 50000원 이상인 경우 High, 아니면 Low
+
+**방법-1**
+1. Recency 기준으로 최근 2020년 6월 이상인 경우 Recent, 아니면 Past
+2. Frequency 빈도를 통해서 2번 이상이면 High, 아니면 Low
+3. Monetary 금액에 대해서 50000원 이상인 경우 High, 아니면 Low
+
+**방법-2**
+1. Recency 기준으로 최근 2020년 10월 이상인 경우 Recent, 아니면 Past
+2. Frequency 빈도를 통해서 3번 이상이면 High, 아니면 Low
+3. Monetary 금액에 대해서 50000원 이상인 경우 High, 아니면 Low
+
+**방법-3**
+1. Recency 기준으로 최근 2020년 10월 이상인 경우 Recent, 아니면 Past
+2. Frequency 빈도를 통해서 3번 이상이면 High, 아니면 Low
+3. Monetary 금액에 대해서 60000원 이상인 경우 High, 아니면 Low
 
 ## 평가
+
 **결과 - 1**
 ![RFM_EDA_Analysis_2](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/rfm_result_2.png)
 이를 통해서는 거의 (Recency, Frequency, Monetary) = (Recent, High, High)인 경우가 거의 50%는 차지하여서 임계값을 다시 정해야 한다는 것을 알게 되었다.
