@@ -1,0 +1,14 @@
+﻿customers_id,Recency,Frequency,Monetary
+3,Recent,High,High
+2,Recent,Low,Low
+4,Recent,Low,Low
+10,Recent,Low,Low
+1,Past,High,High
+6,Past,High,High
+11,Past,High,High
+7,Past,High,Low
+9,Past,Low,High
+8,Past,Low,Low
+12,Past,Low,Low
+14,Past,Low,Low
+15,Past,Low,Low
