@@ -77,8 +77,42 @@ WHERE customer_id = 1
 ```
 ![q5_EDA](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/q5_eda.png)
 
+기본적인 요소에 대한 횟수 집계에 대한 결과
+![eda_visualization](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/eda_result_1.png)
+1. 상품 고객에 대한 현재 등급: 이를 통해 고객 id가 gold, silver인 경우가 나머지인 bronze, vip, new 보다도 더 많이 분포한다는 것을 알게 되었습니다. <br>
+2. 주문 생성일자: 이를 통해 2020년 중 가장 과거인 월은 2월이고, 가장 최근인 월은 12월이라는 것을 알 수 있습니다.
+3. 식당에 해당하는 ID: 사람들이 레스토랑이 2인 경우가 제일 많이 부뉴ㅗ한다는 것을 알게 되었습니다.
+4. 주문 유형: 사람들은 유형이 배달, 포장으로 되어 있으며 배달 유형이 많이 사용한다는 것을 알게 되었습니다.
+
+## 데이터 분석 모델링 이용
 우선 customers, orders, payment을 이용하여 고객에 관해 필요한 데이터들의 
 가설 설정에 있어서 세 가지 관점에 대해서 가설 설정을 해야 한다.
-R: 최근 시점에 대해서 어떠한 것을 기준해야 할지?
-최근 1년 시점에 대해서 해야 할지? 최근 2년 시점에 대해서 해야 할지?
+1. Recency
+기준으로 최근 2020년 6월 이상인 경우 Recent, 아니면 Past
+2. Frequency
+빈도를 통해서 2번 이상이면 High, 아니면 Low
+3. Monetary
+금액에 대해서 50000원 이상인 경우 High, 아니면 Low
 
+## 평가
+**결과 - 1**
+![RFM_EDA_Analysis_2](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/rfm_result_2.png)
+이를 통해서는 거의 (Recency, Frequency, Monetary) = (Recent, High, High)인 경우가 거의 50%는 차지하여서 임계값을 다시 정해야 한다는 것을 알게 되었다.
+
+그래서 우선 Recency인 경우 2020년 9월 이상으로 변경하고, 3번 이상인 경우 High, 아니면 Low라고 하였다. 이 결과 다음과 같이 나타냅니다.
+이를 통해서 Frequency 같은 경우에는 3개 이상으로 임계값으로 변경하였고, Monetary인 경우에는 60000원 이상인 경우 최적의 결과로 다음과 같이 나타냅니다.
+
+**결과 - 2**
+![RFM_EDA_Analysis_3](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/rfm_result_3.png)
+
+이를 통해서 이 데이터로 비교하였을 때 Recency 임계값: 2020년 09월 Frequency: 3개 Monetary: 6만 원 인경우에 대해서 분류 기법을 이용하여 RFM 최적 전략을 세울 수 있다는 것을 알 수 있었습니다.
+최적으로 시각화로 나타내면 다음과 같습니다.
+
+시각화를 이용하여서 최종적으로 비율 분포는 다음과 같이 나타냅니다.
+![visualization_bi](https://github.com/H-Software224/datarian_sql_beginner_project/blob/main/images/rfm_visualization.png)
+
+## 전개
+RFM을 이용하여서 모델링 및 평가를 이용하여 Recency, Frequency, Monetary에 대해서 데이터의 경향을 이용하여 임계값을 기준으로 예측하여 나타내었습니다. 이를 통해서 앞으로 고객 데이터를 이용하여서 계속 늘어나게 되면 임계값을 새로 업데이트를 하면서 고객에 대한 신용 등급을 세분화하면서 나타낼 수 있습니다. 지금 이 데이터로 봤을 때는 5000개 이상의 데이터가 있지 않아서, 작은 크기의 표본 데이터로 분석하였다는 것이 아쉽습니다.
+
+## 인사이트 도출
+이러한 데이터들을 분류 기법을 이용하여 임계값을 미리 정하게 되면서 RFM 분석을 이용하여서 Recency, Frequency, Monetary 이 세  가지 지표를 분류기법을 이용하여 다시 고객 세분화를 이용하여 이 세 가지 요인으로 신용 등급을 책정할 수 있습니다.
